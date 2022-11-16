@@ -1,0 +1,16 @@
+<%= form_with scope: :search,method: :get,local:true,data:{turbo:false} do |f| %>
+    <p>Enter your flickr id : </p>
+    <%= f.text_field :user_id %>
+    <%= f.submit "Search"  %>
+    <%end%>
+    <% if flash[:alert] %>
+    <p style="color:red"><%= alert%> </p>
+    <%end%>
+    <% if @photos %>
+    <ul>
+    <% @photos.each do |photo| %>
+     <%= image_tag Flickr.url(photo) %>
+     <% end %>
+ </ul>
+<% end %>
+    
